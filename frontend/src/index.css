@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --ivory: #f8f5f1;
+  --midnight: #0a1d2b;
+  --teal: #5ea9a1;
+  --amber: #e9b35d;
+  --muted: #dfe6ec;
+  --surface: #ffffff;
+  --shadow: 0 18px 32px rgba(10, 29, 43, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, 'Segoe UI', sans-serif;
+  background: var(--ivory);
+  color: var(--midnight);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+@layer components {
+  .bg-ivory {
+    background-color: var(--ivory);
+  }
+
+  .text-midnight {
+    color: var(--midnight);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-midnight px-4 py-2.5 text-sm font-medium text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-slate-800;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-midnight transition hover:bg-slate-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-xl px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100;
+  }
+
+  .card-surface {
+    @apply rounded-3xl border border-slate-200 bg-white shadow-soft;
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow);
+  }
+}
