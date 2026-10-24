@@ -473,7 +473,7 @@ async def test_tinker_provider_validates_and_returns_mocked_inference(
         "sampling_params",
     }
     assert sample_call["sampling_params"].model_dump(exclude_unset=True) == {
-        "max_tokens": 512,
+        "max_tokens": 2048,
         "temperature": 0.2,
     }
     assert len(client.sampling_client.tokenizer.prompts) == 1
@@ -662,7 +662,7 @@ async def test_tinker_provider_fails_after_one_invalid_output_retry_without_leak
     assert "output_format=leading_prose_before_json" in caplog.text
     assert "stop_reason=length" in caplog.text
     assert "generated_tokens=3" in caplog.text
-    assert "max_output_tokens=512" in caplog.text
+    assert "max_output_tokens=2048" in caplog.text
 
     for sensitive_value in (
         private_document,
