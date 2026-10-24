@@ -1,3 +1,4 @@
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -16,14 +17,15 @@ from app.services.ai_provider import (
     TinkerProvider,
     sanitize_document_text,
 )
+from app.services.document_parser import extract_document_text
 
 router = APIRouter(prefix="/api/v1/documents", tags=["documents"])
 settings = get_settings()
 
 ALLOWED_TYPES = {
-    "text/plain",
-    "application/pdf",
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "text/plain": ".txt",
+    "application/pdf": ".pdf",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx",
 }
 MAX_BYTES = settings.MAX_UPLOAD_MB * 1024 * 1024
 
@@ -51,38 +53,72 @@ async def upload_document(
     current_user=Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
-    raw_bytes = await file.read()
-    filename = file.filename or "uploaded-document"
+    filename = (file.filename or "uploaded-document").strip()
     content_type = file.content_type or "application/octet-stream"
+    extension = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
+    extension = f".{extension}" if extension else ""
+
+    # Validate the filename extension before reading the upload.
+    if extension not in {".txt", ".pdf", ".docx"}:
+        raise HTTPException(
+            status_code=400,
+            detail="Unsupported file type. Upload TXT, PDF, or DOCX.",
+        )
+
+    expected_type = next(
+            mime
+            for mime, ext in ALLOWED_TYPES.items()
+            if ext == extension
+        )
+    
+
+    # Accept the correct MIME type or a generic MIME type commonly used
+    # by browsers, but reject a conflicting declared type.
+    if content_type not in {expected_type, "application/octet-stream"}:
+        raise HTTPException(
+            status_code=400,
+            detail="File extension and content type do not match.",
+        )
+
+    # Read at most MAX_BYTES + 1 bytes so oversized uploads are rejected
+    # without loading an arbitrarily large file into memory.
+    raw_bytes = await file.read(MAX_BYTES + 1)
+    await file.close()
 
     if len(raw_bytes) > MAX_BYTES:
         raise HTTPException(
             status_code=413,
-            detail="File exceeds the upload limit",
+            detail=f"File exceeds the {settings.MAX_UPLOAD_MB} MB upload limit.",
         )
 
-    extension_allowed = filename.lower().endswith((".txt", ".pdf", ".docx"))
-
-    if content_type not in ALLOWED_TYPES and not extension_allowed:
+    if not raw_bytes:
         raise HTTPException(
             status_code=400,
-            detail="Unsupported document type",
+            detail="The uploaded file is empty.",
         )
 
-    if filename.lower().endswith(".pdf") and raw_bytes[:5] != b"%PDF-":
+    # Check file signatures where applicable.
+    if extension == ".pdf" and not raw_bytes.startswith(b"%PDF-"):
         raise HTTPException(
             status_code=400,
-            detail="PDF signature mismatch",
+            detail="PDF signature mismatch. Upload a valid PDF file.",
         )
 
-    if filename.lower().endswith(".txt"):
-        try:
-            text = raw_bytes.decode("utf-8")
-        except UnicodeDecodeError:
-            text = raw_bytes.decode("utf-8", errors="replace")
-    else:
-        # PDF and DOCX extraction is not implemented here yet.
-        text = "Uploaded document accepted for summary extraction."
+    if extension == ".docx" and not raw_bytes.startswith(b"PK"):
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid DOCX file. Upload a valid Word document.",
+        )
+
+    # Extract real document content before saving it.
+    text = extract_document_text(filename, raw_bytes)
+    cleaned_text = sanitize_document_text(text)
+
+    if not cleaned_text.strip():
+        raise HTTPException(
+            status_code=422,
+            detail="No readable text found in the uploaded document.",
+        )
 
     document = Document(
         user_id=current_user.id,
@@ -91,7 +127,7 @@ async def upload_document(
         size_bytes=len(raw_bytes),
         status="pending",
         summary="Queued for extraction",
-        extracted_text=sanitize_document_text(text),
+        extracted_text=cleaned_text,
         created_at=datetime.utcnow(),
     )
 
@@ -152,12 +188,10 @@ async def process_document(
     document.summary = result.summary or result.action_title
     document.json_payload = result.model_dump_json()
 
-    # Use the new actions array. The legacy fields remain available for
-    # backward compatibility with existing API clients.
+    # Use the actions array while preserving legacy API compatibility.
     extracted_actions = result.actions
 
     if not extracted_actions:
-        # Defensive fallback for a result containing only legacy fields.
         from app.schemas import ExtractedAction
 
         extracted_actions = [
@@ -184,9 +218,7 @@ async def process_document(
         .all()
     )
 
-    # Index existing actions by normalized title. Keep the first record
-    # for each title so reprocessing updates records rather than duplicating
-    # actions with the same title.
+    # Reuse existing actions by normalized title to avoid duplicates.
     existing_by_title: dict[str, Action] = {}
 
     for existing in existing_actions:
@@ -231,8 +263,7 @@ async def process_document(
             db.add(action)
 
         else:
-            # Refresh the extracted details while preserving a user's
-            # existing workflow status unless the action was superseded.
+            # Preserve existing workflow status unless superseded.
             action.title = title
             action.description = extracted.description
             action.category = extracted.category
@@ -254,8 +285,7 @@ async def process_document(
 
         processed_actions.append(action)
 
-    # Keep old rows for history and related drafts, but make actions that
-    # disappeared from the latest extraction inactive.
+    # Retain history, but deactivate actions absent from the latest result.
     for existing in existing_actions:
         normalized_title = (existing.title or "").strip().casefold()
 
@@ -265,7 +295,6 @@ async def process_document(
 
     db.commit()
 
-    # Refresh generated IDs and database values after the commit.
     for action in processed_actions:
         db.refresh(action)
 
