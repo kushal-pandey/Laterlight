@@ -17,3 +17,4 @@ psycopg[binary]==3.3.6
 Tinker @ git+https://github.com/thinking-machines-lab/tinker.git
 pypdf
 python-docx
+jinja2
