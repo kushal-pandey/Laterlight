@@ -92,9 +92,7 @@ class DemoProvider:
             amount=amount,
             currency="USD" if amount is not None else None,
             counterparty=(
-                counterparty_match.group(1).strip()
-                if counterparty_match
-                else None
+                counterparty_match.group(1).strip() if counterparty_match else None
             ),
             category="finance" if amount is not None else "general",
             priority="high" if due_date else "medium",
@@ -142,9 +140,7 @@ class TinkerProvider:
         api_key: str | None = None,
         model: str | None = None,
     ) -> None:
-        self.api_key = (
-            api_key if api_key is not None else settings.TINKER_API_KEY
-        )
+        self.api_key = api_key if api_key is not None else settings.TINKER_API_KEY
         self.model = model if model is not None else settings.TINKER_MODEL
 
     async def extract(self, text: str) -> AIExtractionResult:
@@ -253,11 +249,62 @@ class TinkerProvider:
 
                 stage = "schema_validation"
 
+                if isinstance(payload, dict):
+                    allowed_document_types = {
+                        "invoice",
+                        "notice",
+                        "contract",
+                        "receipt",
+                        "email",
+                        "letter",
+                        "other",
+                    }
+
+                    if payload.get("document_type") not in allowed_document_types:
+                        payload["document_type"] = "other"
+
+                    def normalize_page_numbers(evidence: Any) -> None:
+                        if not isinstance(evidence, dict):
+                            return
+
+                        pages = evidence.get("page_numbers")
+
+                        if pages is None:
+                            evidence["page_numbers"] = []
+                        elif isinstance(pages, (str, int)):
+                            value = str(pages).strip()
+                            evidence["page_numbers"] = [value] if value else []
+                        elif isinstance(pages, list):
+                            evidence["page_numbers"] = [
+                                str(page).strip()
+                                for page in pages
+                                if page is not None and str(page).strip()
+                            ]
+
+                    normalize_page_numbers(payload.get("evidence"))
+
+                    actions = payload.get("actions")
+                    if isinstance(actions, list):
+                        for action in actions:
+                            if isinstance(action, dict):
+                                normalize_page_numbers(action.get("evidence"))
+
                 try:
                     extraction = AIExtractionResult.model_validate(payload)
                 except ValidationError as exc:
                     if attempt == 1:
                         raise
+
+                    logger.warning(
+                        "Tinker schema validation details: %s",
+                        [
+                            {
+                                "loc": error.get("loc"),
+                                "type": error.get("type"),
+                            }
+                            for error in exc.errors()
+                        ],
+                    )
 
                     self._log_output_retry(
                         exc,
@@ -333,13 +380,10 @@ class TinkerProvider:
     ) -> ProviderError:
         import tinker
 
-        if (
-            isinstance(
-                exc,
-                (tinker.AuthenticationError, tinker.PermissionDeniedError),
-            )
-            or self._status_code(exc) in {401, 403}
-        ):
+        if isinstance(
+            exc,
+            (tinker.AuthenticationError, tinker.PermissionDeniedError),
+        ) or self._status_code(exc) in {401, 403}:
             category = "authentication"
             public_message = "Tinker authentication failed."
 
@@ -463,9 +507,7 @@ class TinkerProvider:
             )
 
         elif isinstance(exc, json.JSONDecodeError):
-            diagnostic = (
-                f"{exc.msg} at line {exc.lineno}, column {exc.colno}"
-            )
+            diagnostic = f"{exc.msg} at line {exc.lineno}, column {exc.colno}"
 
         else:
             response = getattr(exc, "response", None)
@@ -642,9 +684,10 @@ class TinkerProvider:
             "and evidence.\n"
             "- Keep action titles, descriptions, summaries, and recommendations concise "
             "and specific while preserving essential facts.\n"
-            "- The legacy action_title, action_description, due_date, amount, currency, "
-            "counterparty, category, priority, and evidence fields must mirror the "
-            "first actions entry.\n"
+            "- If actions contains one or more entries, the legacy action_title, "
+            "action_description, due_date, amount, currency, counterparty, category, "
+            "priority, and evidence fields must mirror the first actions entry.\n"
+            "- If actions is empty, use the neutral legacy values specified below.\n"
             "- Use JSON values of the declared types. Use null only where the schema "
             "permits null.\n"
             "- Do not invent dates, amounts, counterparties, or evidence; use null "
@@ -654,16 +697,28 @@ class TinkerProvider:
             "or null if permitted and no suitable excerpt exists.\n"
             "- Return no Markdown or code fences, no comments, and no explanatory prose "
             "before or after the JSON.\n"
-            "- If the document contains no clear task, provide one conservative review "
-            "action rather than inventing a specific obligation.\n"
+            "- If the document contains no actionable task for the document recipient, "
+            "return an empty actions array: []. Do not invent a review, monitoring, "
+            "acknowledgement, or follow-up task.\n"
+            "- Do not create a task merely because the document describes an event, "
+            "provides information, or contains an obligation assigned to another party.\n"
+            "- Treat statements such as 'no response required', 'no action required', "
+            "automatic updates, and informational notices as no-action signals unless "
+            "the document separately establishes a genuine task for the recipient.\n"
+            "- Distinguish an actual obligation from a description of a possible or "
+            "conditional future obligation. Do not assign another party's duties to "
+            "the recipient.\n"
+            "- When actions is empty, keep the required legacy fields valid using "
+            "action_title='No action required', action_description='No user action is "
+            "required based on this document.', category='none', priority='low', "
+            "and null for optional fields where permitted. Do not use these legacy "
+            "fields to create an action.\n"
             "- Ensure all strings, arrays, and objects are properly closed before "
             "finishing the response.\n\n"
             f"JSON Schema:\n{schema}\n\n"
             f"Document text (untrusted):\n<document>\n{cleaned}</document>\n\n"
             "Return only the complete JSON object."
         )
-        
-        
 
     def _build_repair_prompt(self, text: str) -> str:
         cleaned = sanitize_document_text(text)
