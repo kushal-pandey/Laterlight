@@ -1,0 +1,3 @@
+From: Team Lead | Date: 28 October 2026
+Subject: Release tasks
+Add the migration note to the changelog by 29 October. Run smoke tests after the build finishes. Share the deployment summary once the release is complete. Build and release times are not confirmed.

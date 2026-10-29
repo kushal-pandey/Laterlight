@@ -1,0 +1,425 @@
+{
+  "dataset_name": "Laterlight Synthetic Action Extraction Benchmark",
+  "version": "1.0",
+  "synthetic": true,
+  "notes": [
+    "All documents are fictional.",
+    "A null due_date means no exact calendar date is supported by the document.",
+    "An empty expected_actions list means no current action should be created.",
+    "Priority is a benchmark annotation and may need mapping if the current app schema has no priority field."
+  ],
+  "documents": [
+    {
+      "document_id": "LL001",
+      "filename": "LL001.txt",
+      "category": "invoice",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Pay invoice INV-2048",
+          "description": "Pay ₹8,450 and include the invoice number as payment reference.",
+          "due_date": "2026-10-26",
+          "priority": "high",
+          "evidence": "Amount due: ₹8,450; Payment due: 26 October 2026"
+        }
+      ]
+    },
+    {
+      "document_id": "LL002",
+      "filename": "LL002.txt",
+      "category": "invoice",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Pay invoice BL-7719",
+          "description": "Pay the ₹1,499 invoice.",
+          "due_date": "2026-11-05",
+          "priority": "medium",
+          "evidence": "Total ₹1,499; Due: 5 November 2026"
+        }
+      ]
+    },
+    {
+      "document_id": "LL003",
+      "filename": "LL003.txt",
+      "category": "notice",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Provide access for meter inspection",
+          "description": "Ensure an adult is available to provide access to the water meter.",
+          "due_date": "2026-11-06",
+          "priority": "medium",
+          "evidence": "Meter inspection window: 2–6 November 2026"
+        }
+      ]
+    },
+    {
+      "document_id": "LL004",
+      "filename": "LL004.txt",
+      "category": "appointment",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Attend dental appointment",
+          "description": "Arrive 15 minutes early and bring the insurance card.",
+          "due_date": "2026-11-04",
+          "priority": "medium",
+          "evidence": "Appointment: Wednesday, 4 November 2026 at 3:30 PM"
+        }
+      ]
+    },
+    {
+      "document_id": "LL005",
+      "filename": "LL005.txt",
+      "category": "contract",
+      "expected_action_count": 2,
+      "expected_actions": [
+        {
+          "title": "Provide milestone feedback",
+          "description": "Send written feedback within five business days of each milestone delivery.",
+          "due_date": null,
+          "priority": "medium",
+          "evidence": "provide written feedback within five business days of each milestone delivery"
+        },
+        {
+          "title": "Submit final report",
+          "description": "Submit the final report by the stated deadline.",
+          "due_date": "2026-11-20",
+          "priority": "high",
+          "evidence": "submit the final report no later than 20 November 2026"
+        }
+      ]
+    },
+    {
+      "document_id": "LL006",
+      "filename": "LL006.txt",
+      "category": "email",
+      "expected_action_count": 2,
+      "expected_actions": [
+        {
+          "title": "Send updated slide deck",
+          "description": "Send the updated slide deck to Priya.",
+          "due_date": "2026-10-29",
+          "priority": "high",
+          "evidence": "send me the updated slide deck by Thursday, 29 October"
+        },
+        {
+          "title": "Verify Q3 totals",
+          "description": "Check the Q3 totals before the Friday review.",
+          "due_date": "2026-10-30",
+          "priority": "medium",
+          "evidence": "verify the Q3 totals before our review on Friday"
+        }
+      ]
+    },
+    {
+      "document_id": "LL007",
+      "filename": "LL007.txt",
+      "category": "multi_task",
+      "expected_action_count": 3,
+      "expected_actions": [
+        {
+          "title": "Upload signed requirements",
+          "description": "Upload the signed requirements document.",
+          "due_date": "2026-10-30",
+          "priority": "high",
+          "evidence": "Upload the signed requirements document by 30 October 2026"
+        },
+        {
+          "title": "Confirm revised budget",
+          "description": "Ask Finance to confirm the revised budget.",
+          "due_date": "2026-11-02",
+          "priority": "medium",
+          "evidence": "Ask Finance to confirm the revised budget by 2 November 2026"
+        },
+        {
+          "title": "Prepare status update",
+          "description": "Prepare a short update for the team sync.",
+          "due_date": "2026-11-03",
+          "priority": "medium",
+          "evidence": "Prepare a short status update before the team sync on 3 November 2026"
+        }
+      ]
+    },
+    {
+      "document_id": "LL008",
+      "filename": "LL008.txt",
+      "category": "ambiguous_deadline",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Review customer feedback summary",
+          "description": "Review the summary and share major concerns; no firm deadline was set.",
+          "due_date": null,
+          "priority": "low",
+          "evidence": "Please review the summary soon and share major concerns"
+        }
+      ]
+    },
+    {
+      "document_id": "LL009",
+      "filename": "LL009.txt",
+      "category": "no_action",
+      "expected_action_count": 0,
+      "expected_actions": []
+    },
+    {
+      "document_id": "LL010",
+      "filename": "LL010.txt",
+      "category": "no_action",
+      "expected_action_count": 0,
+      "expected_actions": []
+    },
+    {
+      "document_id": "LL011",
+      "filename": "LL011.txt",
+      "category": "invoice",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Pay invoice GF-1003",
+          "description": "Pay ₹3,200 within 14 days of the invoice date.",
+          "due_date": "2026-10-29",
+          "priority": "high",
+          "evidence": "Invoice date: 15 October 2026; Payment terms: Net 14 days from invoice date"
+        }
+      ]
+    },
+    {
+      "document_id": "LL012",
+      "filename": "LL012.txt",
+      "category": "appointment",
+      "expected_action_count": 3,
+      "expected_actions": [
+        {
+          "title": "Complete intake form",
+          "description": "Complete the intake form before the consultation.",
+          "due_date": "2026-11-02",
+          "priority": "medium",
+          "evidence": "Complete the intake form before the consultation"
+        },
+        {
+          "title": "Prepare medication list",
+          "description": "Keep the current medication list available during the consultation.",
+          "due_date": "2026-11-02",
+          "priority": "low",
+          "evidence": "Keep your current medication list nearby"
+        },
+        {
+          "title": "Test video connection",
+          "description": "Test the video connection before the appointment.",
+          "due_date": "2026-11-02",
+          "priority": "low",
+          "evidence": "Test your video connection in advance"
+        }
+      ]
+    },
+    {
+      "document_id": "LL013",
+      "filename": "LL013.txt",
+      "category": "email",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Review access list",
+          "description": "Identify former contractors and reply with names to investigate; do not remove accounts.",
+          "due_date": "2026-11-04",
+          "priority": "high",
+          "evidence": "flag former contractors by 4 November; Reply with names to investigate"
+        }
+      ]
+    },
+    {
+      "document_id": "LL014",
+      "filename": "LL014.txt",
+      "category": "contract",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Notify property manager of lease decision",
+          "description": "Send written notice stating whether you intend to renew at least 30 days before lease end.",
+          "due_date": "2026-12-01",
+          "priority": "high",
+          "evidence": "at least 30 days before lease end"
+        }
+      ]
+    },
+    {
+      "document_id": "LL015",
+      "filename": "LL015.txt",
+      "category": "multi_task",
+      "expected_action_count": 3,
+      "expected_actions": [
+        {
+          "title": "Confirm speaker travel",
+          "description": "Confirm the speaker's travel details.",
+          "due_date": "2026-10-30",
+          "priority": "high",
+          "evidence": "Confirm speaker travel details by 30 October"
+        },
+        {
+          "title": "Send attendee reminder",
+          "description": "Send a reminder to attendees.",
+          "due_date": "2026-11-05",
+          "priority": "medium",
+          "evidence": "Send attendee reminder on 5 November"
+        },
+        {
+          "title": "Print agenda copies",
+          "description": "Print 40 agenda copies before doors open.",
+          "due_date": "2026-11-09",
+          "priority": "medium",
+          "evidence": "Print 40 copies of the agenda before doors open"
+        }
+      ]
+    },
+    {
+      "document_id": "LL016",
+      "filename": "LL016.txt",
+      "category": "ambiguous_deadline",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Send signed form",
+          "description": "Send the signed form; month-end is preferred but not a firm deadline.",
+          "due_date": null,
+          "priority": "low",
+          "evidence": "When you get a chance, send over the signed form"
+        }
+      ]
+    },
+    {
+      "document_id": "LL017",
+      "filename": "LL017.txt",
+      "category": "no_action",
+      "expected_action_count": 0,
+      "expected_actions": []
+    },
+    {
+      "document_id": "LL018",
+      "filename": "LL018.txt",
+      "category": "notice",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Upload annual income documents",
+          "description": "Upload available income documents and eligible deduction proofs.",
+          "due_date": "2026-11-15",
+          "priority": "high",
+          "evidence": "Upload annual income documents to the secure portal by 15 November 2026"
+        }
+      ]
+    },
+    {
+      "document_id": "LL019",
+      "filename": "LL019.txt",
+      "category": "email",
+      "expected_action_count": 3,
+      "expected_actions": [
+        {
+          "title": "Add migration note",
+          "description": "Add the migration note to the changelog.",
+          "due_date": "2026-10-29",
+          "priority": "medium",
+          "evidence": "Add the migration note to the changelog by 29 October"
+        },
+        {
+          "title": "Run smoke tests",
+          "description": "Run smoke tests after the build finishes; no calendar date is stated.",
+          "due_date": null,
+          "priority": "medium",
+          "evidence": "Run smoke tests after the build finishes"
+        },
+        {
+          "title": "Share deployment summary",
+          "description": "Share the summary after release; no date is stated.",
+          "due_date": null,
+          "priority": "medium",
+          "evidence": "Share the deployment summary once the release is complete"
+        }
+      ]
+    },
+    {
+      "document_id": "LL020",
+      "filename": "LL020.txt",
+      "category": "invoice",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Pay outstanding parking balance",
+          "description": "Pay ₹650 to avoid additional charges; exact deadline is unspecified.",
+          "due_date": null,
+          "priority": "medium",
+          "evidence": "Balance ₹650; Please pay promptly to avoid additional charges"
+        }
+      ]
+    },
+    {
+      "document_id": "LL021",
+      "filename": "LL021.txt",
+      "category": "contract",
+      "expected_action_count": 0,
+      "expected_actions": []
+    },
+    {
+      "document_id": "LL022",
+      "filename": "LL022.txt",
+      "category": "appointment",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Attend vehicle service with registration certificate",
+          "description": "Bring the registration certificate to the appointment.",
+          "due_date": "2026-11-07",
+          "priority": "medium",
+          "evidence": "Appointment: 7 November 2026 at 9:00 AM; Please bring the vehicle registration certificate"
+        }
+      ]
+    },
+    {
+      "document_id": "LL023",
+      "filename": "LL023.txt",
+      "category": "multi_task",
+      "expected_action_count": 2,
+      "expected_actions": [
+        {
+          "title": "Submit project topic form",
+          "description": "Submit the project topic form.",
+          "due_date": "2026-11-03",
+          "priority": "high",
+          "evidence": "Submit the project topic form by 3 November 2026"
+        },
+        {
+          "title": "Submit final project proposal",
+          "description": "Submit the final proposal after advisor approval.",
+          "due_date": "2026-11-18",
+          "priority": "high",
+          "evidence": "Final proposal submission closes on 18 November 2026"
+        }
+      ]
+    },
+    {
+      "document_id": "LL024",
+      "filename": "LL024.txt",
+      "category": "email",
+      "expected_action_count": 1,
+      "expected_actions": [
+        {
+          "title": "Proofread draft and send comments",
+          "description": "Proofread the draft, mark factual issues, and send comments.",
+          "due_date": "2026-11-02",
+          "priority": "medium",
+          "evidence": "Proofread the attached draft and send comments by Monday, 2 November"
+        }
+      ]
+    },
+    {
+      "document_id": "LL025",
+      "filename": "LL025.txt",
+      "category": "no_action",
+      "expected_action_count": 0,
+      "expected_actions": []
+    }
+  ]
+}

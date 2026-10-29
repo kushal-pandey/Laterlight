@@ -1,0 +1,2 @@
+DATA PROCESSING ADDENDUM
+The vendor must notify the customer of a confirmed security incident without undue delay and, where feasible, within 48 hours of confirmation. No incident is described; this clause only defines a conditional obligation.

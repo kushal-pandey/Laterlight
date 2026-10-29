@@ -1,0 +1,5 @@
+Invoice INV-2048 — Northstar Office Supplies
+Invoice date: 12 October 2026
+Amount due: ₹8,450
+Payment due: 26 October 2026
+Please pay by the due date and include INV-2048 as the payment reference.

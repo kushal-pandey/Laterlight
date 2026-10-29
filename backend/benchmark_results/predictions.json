@@ -1,0 +1,1111 @@
+[
+  {
+    "document_id": "LL001",
+    "category": "invoice",
+    "expected_action_count": 1,
+    "predicted_action_count": 1,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Pay invoice INV-2048",
+        "predicted_title": "Pay Invoice INV-2048",
+        "title_description_similarity": 0.508,
+        "expected_due_date": "2026-10-26",
+        "predicted_due_date": "2026-10-26",
+        "due_date_correct": true,
+        "expected_priority": "high",
+        "predicted_priority": "high",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Pay Invoice INV-2048",
+        "description": "Settle the outstanding balance of ₹8,450 for Northstar Office Supplies by the due date of 26 October 2026, ensuring the payment reference INV-2048 is included.",
+        "due_date": "2026-10-26",
+        "amount": 8450.0,
+        "currency": "INR",
+        "counterparty": "Northstar Office Supplies",
+        "category": "payment",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Invoice INV-2048 — Northstar Office Supplies Invoice date: 12 October 2026 Amount due: ₹8,450 Payment due: 26 October 2026 Please pay by the due date and include INV-2048 as the payment reference.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL002",
+    "category": "invoice",
+    "expected_action_count": 1,
+    "predicted_action_count": 1,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Pay invoice BL-7719",
+        "predicted_title": "Pay Invoice BL-7719",
+        "title_description_similarity": 0.467,
+        "expected_due_date": "2026-11-05",
+        "predicted_due_date": "2026-11-05",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "high",
+        "priority_correct": false
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Pay Invoice BL-7719",
+        "description": "Pay the total amount of ₹1,499 to Brightline Internet Services by the due date of 5 November 2026 to avoid late fees.",
+        "due_date": "2026-11-05",
+        "amount": 1499.0,
+        "currency": "INR",
+        "counterparty": "Brightline Internet Services",
+        "category": "payment",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Brightline Internet Services Invoice BL-7719 | Total ₹1,499 Issued: 20 October 2026 | Due: 5 November 2026 Please pay the total by the due date to avoid late fees.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL003",
+    "category": "notice",
+    "expected_action_count": 1,
+    "predicted_action_count": 2,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 1,
+    "matches": [
+      {
+        "expected_title": "Provide access for meter inspection",
+        "predicted_title": "Provide Access to Water Meter",
+        "title_description_similarity": 0.674,
+        "expected_due_date": "2026-11-06",
+        "predicted_due_date": "2026-11-06",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "high",
+        "priority_correct": false
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Provide Access to Water Meter",
+        "description": "Ensure an adult resident is available to provide access to the water meter during the scheduled inspection window of 2–6 November 2026.",
+        "due_date": "2026-11-06",
+        "amount": null,
+        "currency": null,
+        "counterparty": "City Water Department",
+        "category": "utilities",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Meter inspection window: 2–6 November 2026. An adult resident must provide access to the water meter during this window.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Arrange Alternative Appointment",
+        "description": "If no adult resident is available during the inspection window of 2–6 November 2026, call 1800-555-0188 to arrange another appointment.",
+        "due_date": null,
+        "amount": null,
+        "currency": null,
+        "counterparty": "City Water Department",
+        "category": "utilities",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "If nobody is available, call 1800-555-0188 to arrange another appointment.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL004",
+    "category": "appointment",
+    "expected_action_count": 1,
+    "predicted_action_count": 1,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Attend dental appointment",
+        "predicted_title": "Prepare for Appointment",
+        "title_description_similarity": 0.667,
+        "expected_due_date": "2026-11-04",
+        "predicted_due_date": "2026-11-04",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "high",
+        "priority_correct": false
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Prepare for Appointment",
+        "description": "Arrive 15 minutes early on Wednesday, 4 November 2026 at 3:30 PM and bring your insurance card.",
+        "due_date": "2026-11-04",
+        "amount": null,
+        "currency": null,
+        "counterparty": "Riverside Dental Clinic",
+        "category": "healthcare",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Riverside Dental Clinic — Appointment Confirmation Appointment: Wednesday, 4 November 2026 at 3:30 PM. Please arrive 15 minutes early and bring your insurance card.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL005",
+    "category": "contract",
+    "expected_action_count": 2,
+    "predicted_action_count": 1,
+    "matched_action_count": 1,
+    "false_negative_count": 1,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Submit final report",
+        "predicted_title": "Submit Final Report",
+        "title_description_similarity": 0.731,
+        "expected_due_date": "2026-11-20",
+        "predicted_due_date": "2026-11-20",
+        "due_date_correct": true,
+        "expected_priority": "high",
+        "predicted_priority": "high",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Submit Final Report",
+        "description": "Submit the final report to the client no later than 20 November 2026.",
+        "due_date": "2026-11-20",
+        "amount": null,
+        "currency": null,
+        "counterparty": "client",
+        "category": "reporting",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "The consultant must submit the final report no later than 20 November 2026.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL006",
+    "category": "email",
+    "expected_action_count": 2,
+    "predicted_action_count": 2,
+    "matched_action_count": 2,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Verify Q3 totals",
+        "predicted_title": "Verify Q3 totals",
+        "title_description_similarity": 0.872,
+        "expected_due_date": "2026-10-30",
+        "predicted_due_date": "2026-10-30",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "high",
+        "priority_correct": false
+      },
+      {
+        "expected_title": "Send updated slide deck",
+        "predicted_title": "Submit updated slide deck",
+        "title_description_similarity": 0.734,
+        "expected_due_date": "2026-10-29",
+        "predicted_due_date": "2026-10-29",
+        "due_date_correct": true,
+        "expected_priority": "high",
+        "predicted_priority": "high",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Submit updated slide deck",
+        "description": "Send the updated slide deck to Priya Shah by Thursday, 29 October 2026.",
+        "due_date": "2026-10-29",
+        "amount": null,
+        "currency": null,
+        "counterparty": "Priya Shah",
+        "category": "Administrative",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Please send me the updated slide deck by Thursday, 29 October.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Verify Q3 totals",
+        "description": "Verify the Q3 totals before the Friday review meeting.",
+        "due_date": "2026-10-30",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "Financial",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Also verify the Q3 totals before our review on Friday.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL007",
+    "category": "multi_task",
+    "expected_action_count": 3,
+    "predicted_action_count": 3,
+    "matched_action_count": 3,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Confirm revised budget",
+        "predicted_title": "Confirm revised budget",
+        "title_description_similarity": 1.0,
+        "expected_due_date": "2026-11-02",
+        "predicted_due_date": "2026-11-02",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "medium",
+        "priority_correct": true
+      },
+      {
+        "expected_title": "Prepare status update",
+        "predicted_title": "Prepare status update",
+        "title_description_similarity": 0.926,
+        "expected_due_date": "2026-11-03",
+        "predicted_due_date": "2026-11-03",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "medium",
+        "priority_correct": true
+      },
+      {
+        "expected_title": "Upload signed requirements",
+        "predicted_title": "Upload signed requirements document",
+        "title_description_similarity": 0.798,
+        "expected_due_date": "2026-10-30",
+        "predicted_due_date": "2026-10-30",
+        "due_date_correct": true,
+        "expected_priority": "high",
+        "predicted_priority": "high",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Upload signed requirements document",
+        "description": "Upload the signed requirements document to the designated system.",
+        "due_date": "2026-10-30",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "project_admin",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "1. Upload the signed requirements document by 30 October 2026.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Confirm revised budget",
+        "description": "Ask Finance to confirm the revised budget.",
+        "due_date": "2026-11-02",
+        "amount": null,
+        "currency": null,
+        "counterparty": "Finance",
+        "category": "project_admin",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "2. Ask Finance to confirm the revised budget by 2 November 2026.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Prepare status update",
+        "description": "Prepare a short status update before the team sync.",
+        "due_date": "2026-11-03",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "project_admin",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "3. Prepare a short status update before the team sync on 3 November 2026.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL008",
+    "category": "ambiguous_deadline",
+    "expected_action_count": 1,
+    "predicted_action_count": 1,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Review customer feedback summary",
+        "predicted_title": "Review Customer Feedback Summary",
+        "title_description_similarity": 0.656,
+        "expected_due_date": null,
+        "predicted_due_date": null,
+        "due_date_correct": true,
+        "expected_priority": "low",
+        "predicted_priority": "medium",
+        "priority_correct": false
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Review Customer Feedback Summary",
+        "description": "Review the provided customer feedback summary and prepare to discuss major concerns during a meeting next week.",
+        "due_date": null,
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "feedback",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "Please review the summary soon and share major concerns.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL009",
+    "category": "no_action",
+    "expected_action_count": 0,
+    "predicted_action_count": 0,
+    "matched_action_count": 0,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [],
+    "predictions": []
+  },
+  {
+    "document_id": "LL010",
+    "category": "no_action",
+    "expected_action_count": 0,
+    "predicted_action_count": 0,
+    "matched_action_count": 0,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [],
+    "predictions": []
+  },
+  {
+    "document_id": "LL011",
+    "category": "invoice",
+    "expected_action_count": 1,
+    "predicted_action_count": 1,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Pay invoice GF-1003",
+        "predicted_title": "Settle Invoice GF-1003",
+        "title_description_similarity": 0.565,
+        "expected_due_date": "2026-10-29",
+        "predicted_due_date": "2026-10-29",
+        "due_date_correct": true,
+        "expected_priority": "high",
+        "predicted_priority": "high",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Settle Invoice GF-1003",
+        "description": "Pay the outstanding amount of ₹3,200 to Greenfield Repairs within 14 days of the invoice date (by 29 October 2026) to avoid late fees.",
+        "due_date": "2026-10-29",
+        "amount": 3200.0,
+        "currency": "INR",
+        "counterparty": "Greenfield Repairs",
+        "category": "payment",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Greenfield Repairs — Invoice GF-1003 Invoice date: 15 October 2026 | Amount: ₹3,200 Payment terms: Net 14 days from invoice date. Please settle within the stated payment period.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL012",
+    "category": "appointment",
+    "expected_action_count": 3,
+    "predicted_action_count": 3,
+    "matched_action_count": 3,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Prepare medication list",
+        "predicted_title": "Prepare Medication List",
+        "title_description_similarity": 0.88,
+        "expected_due_date": "2026-11-02",
+        "predicted_due_date": "2026-11-02",
+        "due_date_correct": true,
+        "expected_priority": "low",
+        "predicted_priority": "high",
+        "priority_correct": false
+      },
+      {
+        "expected_title": "Complete intake form",
+        "predicted_title": "Complete Intake Form",
+        "title_description_similarity": 0.789,
+        "expected_due_date": "2026-11-02",
+        "predicted_due_date": "2026-11-02",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "high",
+        "priority_correct": false
+      },
+      {
+        "expected_title": "Test video connection",
+        "predicted_title": "Test Video Connection",
+        "title_description_similarity": 0.719,
+        "expected_due_date": "2026-11-02",
+        "predicted_due_date": "2026-11-02",
+        "due_date_correct": true,
+        "expected_priority": "low",
+        "predicted_priority": "high",
+        "priority_correct": false
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Complete Intake Form",
+        "description": "Fill out the intake form prior to the scheduled consultation.",
+        "due_date": "2026-11-02",
+        "amount": null,
+        "currency": null,
+        "counterparty": "Dr. Meera Rao",
+        "category": "medical",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Complete the intake form before the consultation.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Prepare Medication List",
+        "description": "Ensure the current medication list is available nearby for the consultation.",
+        "due_date": "2026-11-02",
+        "amount": null,
+        "currency": null,
+        "counterparty": "Dr. Meera Rao",
+        "category": "medical",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Keep your current medication list nearby.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Test Video Connection",
+        "description": "Verify the video connection is working properly before the scheduled time.",
+        "due_date": "2026-11-02",
+        "amount": null,
+        "currency": null,
+        "counterparty": "Dr. Meera Rao",
+        "category": "technical",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Test your video connection in advance.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL013",
+    "category": "email",
+    "expected_action_count": 1,
+    "predicted_action_count": 2,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 1,
+    "matches": [
+      {
+        "expected_title": "Review access list",
+        "predicted_title": "Review Access List",
+        "title_description_similarity": 0.495,
+        "expected_due_date": "2026-11-04",
+        "predicted_due_date": "2026-11-04",
+        "due_date_correct": true,
+        "expected_priority": "high",
+        "predicted_priority": "high",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Review Access List",
+        "description": "Examine the attached access list to identify former contractors.",
+        "due_date": "2026-11-04",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "security",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Review the attached access list and flag former contractors by 4 November.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Reply with Names to Investigate",
+        "description": "Send a reply containing the names of former contractors identified during the review.",
+        "due_date": "2026-11-04",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "security",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Reply with names to investigate.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL014",
+    "category": "contract",
+    "expected_action_count": 1,
+    "predicted_action_count": 1,
+    "matched_action_count": 0,
+    "false_negative_count": 1,
+    "false_positive_count": 1,
+    "matches": [],
+    "predictions": [
+      {
+        "title": "Submit Lease Renewal or Non-Renewal Notice",
+        "description": "Notify the property manager in writing at least 30 days before the lease end date of 31 December 2026, specifying whether you intend to renew or not renew the lease.",
+        "due_date": "2026-11-01",
+        "amount": null,
+        "currency": null,
+        "counterparty": "property manager",
+        "category": "lease_management",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Notify the property manager in writing at least 30 days before lease end if you intend to renew. The same notice period applies if you do not plan to renew.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL015",
+    "category": "multi_task",
+    "expected_action_count": 3,
+    "predicted_action_count": 3,
+    "matched_action_count": 3,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Print agenda copies",
+        "predicted_title": "Print agenda copies",
+        "title_description_similarity": 0.837,
+        "expected_due_date": "2026-11-09",
+        "predicted_due_date": "2026-11-09",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "medium",
+        "priority_correct": true
+      },
+      {
+        "expected_title": "Confirm speaker travel",
+        "predicted_title": "Confirm speaker travel details",
+        "title_description_similarity": 0.794,
+        "expected_due_date": "2026-10-30",
+        "predicted_due_date": "2026-10-30",
+        "due_date_correct": true,
+        "expected_priority": "high",
+        "predicted_priority": "high",
+        "priority_correct": true
+      },
+      {
+        "expected_title": "Send attendee reminder",
+        "predicted_title": "Send attendee reminder",
+        "title_description_similarity": 0.786,
+        "expected_due_date": "2026-11-05",
+        "predicted_due_date": "2026-11-05",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "medium",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Confirm speaker travel details",
+        "description": "Confirm speaker travel details by 30 October.",
+        "due_date": "2026-10-30",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "logistics",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Confirm speaker travel details by 30 October.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Send attendee reminder",
+        "description": "Send attendee reminder on 5 November.",
+        "due_date": "2026-11-05",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "logistics",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "Send attendee reminder on 5 November.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Print agenda copies",
+        "description": "Print 40 copies of the agenda before doors open.",
+        "due_date": "2026-11-09",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "logistics",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "Print 40 copies of the agenda before doors open.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL016",
+    "category": "ambiguous_deadline",
+    "expected_action_count": 1,
+    "predicted_action_count": 1,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Send signed form",
+        "predicted_title": "Send signed form",
+        "title_description_similarity": 0.566,
+        "expected_due_date": null,
+        "predicted_due_date": "2026-10-31",
+        "due_date_correct": false,
+        "expected_priority": "low",
+        "predicted_priority": "medium",
+        "priority_correct": false
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Send signed form",
+        "description": "Send the signed form to Sam before the end of October 2026. If this is difficult, inform Sam to agree on a new date.",
+        "due_date": "2026-10-31",
+        "amount": null,
+        "currency": null,
+        "counterparty": "Sam",
+        "category": "administrative",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "When you get a chance, send over the signed form. It would be helpful to have it before the end of the month, but if difficult, let me know and we can agree on a date.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL017",
+    "category": "no_action",
+    "expected_action_count": 0,
+    "predicted_action_count": 0,
+    "matched_action_count": 0,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [],
+    "predictions": []
+  },
+  {
+    "document_id": "LL018",
+    "category": "notice",
+    "expected_action_count": 1,
+    "predicted_action_count": 1,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Upload annual income documents",
+        "predicted_title": "Upload Annual Income Documents",
+        "title_description_similarity": 0.687,
+        "expected_due_date": "2026-11-15",
+        "predicted_due_date": "2026-11-15",
+        "due_date_correct": true,
+        "expected_priority": "high",
+        "predicted_priority": "high",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Upload Annual Income Documents",
+        "description": "Upload required annual income documents including Form 16, interest certificates, and eligible deduction proofs to the secure portal.",
+        "due_date": "2026-11-15",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "tax",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Upload annual income documents to the secure portal by 15 November 2026.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL019",
+    "category": "email",
+    "expected_action_count": 3,
+    "predicted_action_count": 3,
+    "matched_action_count": 3,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Add migration note",
+        "predicted_title": "Add migration note to changelog",
+        "title_description_similarity": 0.814,
+        "expected_due_date": "2026-10-29",
+        "predicted_due_date": "2026-10-29",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "high",
+        "priority_correct": false
+      },
+      {
+        "expected_title": "Run smoke tests",
+        "predicted_title": "Run smoke tests",
+        "title_description_similarity": 0.803,
+        "expected_due_date": null,
+        "predicted_due_date": null,
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "medium",
+        "priority_correct": true
+      },
+      {
+        "expected_title": "Share deployment summary",
+        "predicted_title": "Share deployment summary",
+        "title_description_similarity": 0.755,
+        "expected_due_date": null,
+        "predicted_due_date": null,
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "medium",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Add migration note to changelog",
+        "description": "Add the migration note to the changelog by 29 October.",
+        "due_date": "2026-10-29",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "release",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Add the migration note to the changelog by 29 October.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Run smoke tests",
+        "description": "Run smoke tests after the build finishes.",
+        "due_date": null,
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "release",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "Run smoke tests after the build finishes.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Share deployment summary",
+        "description": "Share the deployment summary once the release is complete.",
+        "due_date": null,
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "release",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "Share the deployment summary once the release is complete.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL020",
+    "category": "invoice",
+    "expected_action_count": 1,
+    "predicted_action_count": 1,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Pay outstanding parking balance",
+        "predicted_title": "Pay Outstanding Parking Balance",
+        "title_description_similarity": 0.57,
+        "expected_due_date": null,
+        "predicted_due_date": null,
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "high",
+        "priority_correct": false
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Pay Outstanding Parking Balance",
+        "description": "Settle the outstanding balance of ₹650 with Metro Parking Services to avoid additional charges as requested in the reminder.",
+        "due_date": null,
+        "amount": 650.0,
+        "currency": "INR",
+        "counterparty": "Metro Parking Services",
+        "category": "payment",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Balance ₹650 Your balance is outstanding. Please pay promptly to avoid additional charges.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL021",
+    "category": "contract",
+    "expected_action_count": 0,
+    "predicted_action_count": 0,
+    "matched_action_count": 0,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [],
+    "predictions": []
+  },
+  {
+    "document_id": "LL022",
+    "category": "appointment",
+    "expected_action_count": 1,
+    "predicted_action_count": 2,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 1,
+    "matches": [
+      {
+        "expected_title": "Attend vehicle service with registration certificate",
+        "predicted_title": "Bring Vehicle Registration Certificate",
+        "title_description_similarity": 0.428,
+        "expected_due_date": "2026-11-07",
+        "predicted_due_date": "2026-11-07",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "high",
+        "priority_correct": false
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Bring Vehicle Registration Certificate",
+        "description": "Ensure the vehicle registration certificate is available to present at the scheduled appointment.",
+        "due_date": "2026-11-07",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "vehicle_service",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Please bring the vehicle registration certificate.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Cancel Appointment if Unable to Attend",
+        "description": "If unable to attend the appointment, cancel it at least 12 hours before the scheduled time.",
+        "due_date": null,
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "vehicle_service",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "If unable to attend, cancel at least 12 hours before the appointment.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL023",
+    "category": "multi_task",
+    "expected_action_count": 2,
+    "predicted_action_count": 3,
+    "matched_action_count": 2,
+    "false_negative_count": 0,
+    "false_positive_count": 1,
+    "matches": [
+      {
+        "expected_title": "Submit final project proposal",
+        "predicted_title": "Submit Final Proposal",
+        "title_description_similarity": 0.722,
+        "expected_due_date": "2026-11-18",
+        "predicted_due_date": "2026-11-18",
+        "due_date_correct": true,
+        "expected_priority": "high",
+        "predicted_priority": "high",
+        "priority_correct": true
+      },
+      {
+        "expected_title": "Submit project topic form",
+        "predicted_title": "Submit Project Topic Form",
+        "title_description_similarity": 0.718,
+        "expected_due_date": "2026-11-03",
+        "predicted_due_date": "2026-11-03",
+        "due_date_correct": true,
+        "expected_priority": "high",
+        "predicted_priority": "high",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Submit Project Topic Form",
+        "description": "Complete and submit the project topic form to the University Admin Office.",
+        "due_date": "2026-11-03",
+        "amount": null,
+        "currency": null,
+        "counterparty": "University Admin Office",
+        "category": "academic",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "UNIVERSITY ADMIN OFFICE Submit the project topic form by 3 November 2026.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Obtain Advisor Approval",
+        "description": "Secure approval from your advisor for the project topic before proceeding to the final proposal.",
+        "due_date": null,
+        "amount": null,
+        "currency": null,
+        "counterparty": "Advisor",
+        "category": "academic",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Your advisor must approve the topic before the final proposal is submitted.",
+          "page_numbers": []
+        }
+      },
+      {
+        "title": "Submit Final Proposal",
+        "description": "Submit the final proposal to the University Admin Office.",
+        "due_date": "2026-11-18",
+        "amount": null,
+        "currency": null,
+        "counterparty": "University Admin Office",
+        "category": "academic",
+        "priority": "high",
+        "evidence": {
+          "source_excerpt": "Final proposal submission closes on 18 November 2026.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL024",
+    "category": "email",
+    "expected_action_count": 1,
+    "predicted_action_count": 1,
+    "matched_action_count": 1,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [
+      {
+        "expected_title": "Proofread draft and send comments",
+        "predicted_title": "Proofread attached draft",
+        "title_description_similarity": 0.34,
+        "expected_due_date": "2026-11-02",
+        "predicted_due_date": "2026-11-02",
+        "due_date_correct": true,
+        "expected_priority": "medium",
+        "predicted_priority": "medium",
+        "priority_correct": true
+      }
+    ],
+    "predictions": [
+      {
+        "title": "Proofread attached draft",
+        "description": "Review the attached draft document, identify and mark any factual issues clearly, and send comments by Monday, 2 November.",
+        "due_date": "2026-11-02",
+        "amount": null,
+        "currency": null,
+        "counterparty": null,
+        "category": "administrative",
+        "priority": "medium",
+        "evidence": {
+          "source_excerpt": "Proofread the attached draft and send comments by Monday, 2 November. Mark factual issues clearly.",
+          "page_numbers": []
+        }
+      }
+    ]
+  },
+  {
+    "document_id": "LL025",
+    "category": "no_action",
+    "expected_action_count": 0,
+    "predicted_action_count": 0,
+    "matched_action_count": 0,
+    "false_negative_count": 0,
+    "false_positive_count": 0,
+    "matches": [],
+    "predictions": []
+  }
+]

@@ -3,6 +3,7 @@
 Laterlight is a personal administration autopilot designed to turn invoices, notices, contracts, and follow-up requests into a structured action queue with evidence-backed review before approval.
 
 ## Product vision
+
 - Upload documents and identify actionable items.
 - Extract due dates, amounts, counterparties, and next steps.
 - Prioritize work with due-date urgency and category-based filtering.
@@ -10,6 +11,7 @@ Laterlight is a personal administration autopilot designed to turn invoices, not
 - Keep the user experience polished and privacy-conscious.
 
 ## Tech stack
+
 - Frontend: React, Vite, TypeScript, Tailwind CSS, shadcn-inspired UI, Lucide icons, Framer Motion
 - Backend: FastAPI, Pydantic, SQLAlchemy 2, Alembic
 - Database: PostgreSQL-ready with SQLite fallback for development
@@ -17,6 +19,7 @@ Laterlight is a personal administration autopilot designed to turn invoices, not
 - Tests: pytest, Vitest, React Testing Library
 
 ## Repository layout
+
 - `frontend/` — React + Vite application
 - `backend/` — FastAPI service and SQLAlchemy models
 - `docs/` — architecture and deployment notes
@@ -25,6 +28,7 @@ Laterlight is a personal administration autopilot designed to turn invoices, not
 ## Local setup
 
 ### 1. Frontend
+
 ```bash
 cd frontend
 npm install
@@ -32,6 +36,7 @@ npm run dev
 ```
 
 ### 2. Backend
+
 ```bash
 cd backend
 python -m venv .venv
@@ -57,6 +62,7 @@ TINKER_MODEL=Qwen/Qwen3.5-4B
 ```
 
 Important:
+
 - Never paste the key into GitHub, chat, logs, or source files.
 - Keep `.env` local and ignored by Git.
 - The `.env.example` file contains placeholders only.
@@ -64,20 +70,45 @@ Important:
 `Qwen/Qwen3.5-4B` is the configured development model. Before sampling, the backend checks Tinker's server capabilities and requires the selected model to be available for sampling; model availability can vary and is not assumed from this default.
 
 ## Demo mode
+
 If `TINKER_API_KEY` is not configured, the backend uses deterministic demo extraction so the UI remains usable without a live model call. When credentials are present, Tinker errors are returned as sanitized provider errors; the backend does not silently switch providers.
 
 Tinker output is parsed as JSON, validated against the backend extraction schema, and checked so any evidence excerpt occurs in the submitted text before the result is persisted or returned. Malformed or schema-invalid output receives one bounded repair request; provider/API errors do not trigger a retry. Automated tests mock the SDK and make no live or paid model calls.
 
 ## Architecture
+
 See `docs/architecture.md` and `docs/deployment.md`.
 
 ## Security notes
+
 - Raw files are not retained by default beyond minimal processing.
 - All user-scoped queries are guarded by ownership checks.
 - Prompt injection is mitigated by sanitizing document text before sending it to the model.
 - Secret values remain in `.env` and are never exposed to the frontend.
 
+## Evaluation
+
+A small benchmark of the extraction pipeline on 25 synthetic documents (31 labeled actions). The documents and labels were generated with AI assistance and not independently reviewed, so these are development-benchmark results, not real-world accuracy.
+
+- Dataset: `laterlight_ground_truth_dataset/`
+- Script: `[path to run_laterlight_benchmark.py]` (run from `backend/` with the virtual environment active)
+- Raw outputs: `backend/benchmark_results/report.json` and `predictions.json`
+- Model: Qwen/Qwen3.5-4B via Tinker, single run on 29th October
+
+  | Metric                                     | Result        |
+  | ------------------------------------------ | ------------- |
+  | Documents processed without error          | 25 / 25       |
+  | Actions found (recall)                     | 29 / 31 (94%) |
+  | Predicted actions that matched (precision) | 29 / 34 (85%) |
+  | F1                                         | 89%           |
+  | Due date correct on matched actions        | 28 / 29 (97%) |
+  | Priority matches the label                 | 17 / 29 (59%) |
+  | No-action documents correctly left empty   | 5 / 5         |
+
+  Limitations: small sample; AI-generated documents and labels; actions are matched by text similarity of title and description (0.30 threshold); amounts and counterparties are not scored; priority labels are subjective; single run.
+
 ## Contributing
+
 - Run backend tests with `pytest`.
 - Run frontend linting with `npm run lint`.
 - Run frontend build with `npm run build`.
